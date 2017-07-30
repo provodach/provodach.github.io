@@ -141,6 +141,7 @@ function audio_fmt_result (res)
 			break;
 
 		case 'maybe' :
+		case 'probably' :
 			log ('возможно', 'warn');
 			break;
 
