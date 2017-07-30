@@ -1,4 +1,4 @@
-var servers = ['provoda.ch', 'api.nyan.pw', 'static.htgtps.cat', 'api.https.cat', 'station.waveradio.org', 'bits.waveradio.org'],
+var servers = ['provoda.ch', 'api.nyan.pw', 'static.https.cat', 'api.https.cat', 'station.waveradio.org', 'bits.waveradio.org'],
 
 	audios  = [{
 			'type' : 'audio/mpeg',
