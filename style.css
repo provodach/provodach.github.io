@@ -6,6 +6,11 @@ html, body
 	font-family: 'Open Sans', Tahoma, Verdana, Arial, Sans-Serif;
 }
 
+a
+{
+	color: #f5f5f5;
+}
+
 #start-splash
 {
 	position: absolute;
