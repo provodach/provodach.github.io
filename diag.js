@@ -35,7 +35,8 @@ function start_test()
 {
 	$('#start-splash').hide();
 	$('#log').show();
-
+	
+	window.navigator.oscpu = window.navigator.oscpu || window.navigator.platform;
 	log ('Браузер: '+navigator.userAgent+"\n", 'info');
 	log ('ОС: '+navigator.oscpu+"\n\n", 'info');
 
