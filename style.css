@@ -1,0 +1,83 @@
+html, body
+{
+	background: #020202;
+	color: #f5f5f5;
+	padding: 0; margin: 0;
+	font-family: 'Open Sans', Tahoma, Verdana, Arial, Sans-Serif;
+}
+
+#start-splash
+{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	width: 100%;
+	padding: 5px;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+#splash-container
+{
+	width: 500px;
+	margin: 0 auto;
+}
+
+#splash-start-test
+{
+	display: block;
+	margin: 0 auto;
+	width: 300px;
+	font-weight: 300;
+	text-align: center;
+	background: #202020;
+	color: #f5f5f5;
+	text-decoration: none;
+	padding: 5px;
+	box-sizing: border-box;
+	font-size: 21pt;
+}
+
+#log
+{
+	font-family: 'Courier New', 'Lucida Console', 'Ubuntu Mono', 'Liberation Mono', monospace;
+	box-sizing: border-box;
+	padding: 5px;
+}
+
+#log .info
+{
+	color: #8AEFFF;
+}
+
+#log .ok
+{
+	color: #1FFF62;
+}
+
+#log .warn
+{
+	color: #ECFF45;
+}
+
+#log .error
+{
+	color: #FF4040;
+}
+
+@media handheld, only screen and (max-width: 1024px)
+{
+	html, body
+	{
+		padding: 3px; margin: 0;
+	}
+	
+	#splash-container
+	{
+		width: 100%;
+		box-sizing: border-box;
+	}
+}
