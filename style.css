@@ -13,7 +13,7 @@ a
 
 .popup
 {
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	left: 0;
 	-webkit-transform: translateY(-50%);
@@ -21,7 +21,6 @@ a
 	transform: translateY(-50%);
 	width: 100%;
 	padding: 5px;
-	box-sizing: border-box;
 	text-align: center;
 	background: #090909;
 	border-top: 1px solid #909090;
