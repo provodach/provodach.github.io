@@ -11,6 +11,14 @@ var servers = ['provoda.ch', 'api.nyan.pw', 'static.https.cat', 'api.https.cat',
 		{
 			'type' : 'audio/ogg',
 			'file' : 'poison-he.aac'
+		},
+		{
+			'type' : 'audio/mpeg',
+			'file' : '//station.waveradio.org/provodach.mp3'
+		},
+		{
+			'type' : 'audio/aac',
+			'file' : '//station.waveradio.org/provodach'
 		}],
 
 	statuses = {
@@ -161,18 +169,21 @@ function audio_fmt_result (res)
 	}
 }
 
-function audio_play (index, nextEvent)
+function audio_play (index, nextEvent, isRadio)
 {
 	if (player)
 		delete player;
 
 	player = document.createElement('audio');
 
-	playTimer = setTimeout (function() { 
-		log ("Что-то пошло не так, браузер не отвечает на запросы аудио.\n", 'error');
-		statuses.audio = false;
-		nextEvent();
-	}, 5000); 
+	if (!is_mobile())
+	{ // as user should interact with the page, we won't set any response timeout
+		playTimer = setTimeout (function() { 
+			log ("Что-то пошло не так, браузер не отвечает на запросы аудио.\n", 'error');
+			statuses.audio = false;
+			nextEvent();
+		}, 5000);
+	}
 
 	player.onloadstart = function() {
 		log ("Буферизируем аудиопоток...\n");
@@ -198,6 +209,11 @@ function audio_play (index, nextEvent)
 
 	player.onplay = function() {
 		clearTimeout(playTimer);
+		if (isRadio)
+		{
+			log ("Воспроизвожу поток радиостанции. Отключение через 20 секунд.\n");
+			setTimeout(function() { player.pause(); }, 20000);
+		}
 	}
 
 	player.onerror = function() {
@@ -264,12 +280,26 @@ function audio_test()
 				log ("\n* Формат HE-AAC\n", 'info');
 					audio_play(2, function() {
 						log ("Тестирование аудио завершено.\n");
-						finish_test();
+						stream_test();
 					});
 			});
 		}); 
 
 	}
+}
+
+function stream_test()
+{
+	log ("\nПроверяю собственно радио (потоковое аудио)", 'info');
+
+	log ("\n* (радио) Формат MP3\n", 'info');
+		audio_play(3, function() {
+			log ("\n* (радио) Формат AAC\n", 'info');
+			audio_play(4, function() {
+					log ("Тестирование радио завершено.\n");
+					finish_test();				
+			}, true);
+		}, true);
 }
 
 function finish_test()
