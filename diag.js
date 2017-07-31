@@ -25,7 +25,7 @@ var servers = ['provoda.ch', 'api.nyan.pw', 'static.https.cat', 'api.https.cat',
 
 function is_mobile()
 {
-	return (/ipad|iphone|android/gi.test(navigator.userAgent));
+	return (/ipad|ipod|iphone|android/gi.test(navigator.userAgent));
 }
 
 function log (message, style)
@@ -35,6 +35,8 @@ function log (message, style)
 	message = message.replace (/\n/g, '<br>');
 
 	$('#log').append ('<span class="'+style+'">'+message+"</span>");
+
+	$(document).scrollTop($(document).height()-$(window).height());
 }
 
 function start_test()
