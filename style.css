@@ -11,7 +11,7 @@ a
 	color: #f5f5f5;
 }
 
-#start-splash
+.popup
 {
 	position: absolute;
 	top: 50%;
@@ -23,15 +23,18 @@ a
 	padding: 5px;
 	box-sizing: border-box;
 	text-align: center;
+	background: #090909;
+	border-top: 1px solid #909090;
+	border-bottom: 1px solid #909090;
 }
 
-#splash-container
+.popup-container
 {
 	width: 500px;
 	margin: 0 auto;
 }
 
-#splash-start-test
+.popup-button
 {
 	display: block;
 	margin: 0 auto;
@@ -73,6 +76,11 @@ a
 	color: #FF4040;
 }
 
+#audio-popup
+{
+	display: none;
+}
+
 @media handheld, only screen and (max-width: 1024px)
 {
 	html, body
@@ -80,7 +88,7 @@ a
 		padding: 3px; margin: 0;
 	}
 	
-	#splash-container
+	.popup-container
 	{
 		width: 100%;
 		box-sizing: border-box;

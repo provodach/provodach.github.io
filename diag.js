@@ -19,8 +19,14 @@ var servers = ['provoda.ch', 'api.nyan.pw', 'static.https.cat', 'api.https.cat',
 		'audio'   : true
 	},
 
+	player = null,
 	playTimer = null,
 	loadTimer = null;
+
+function is_mobile()
+{
+	return (/ipad|iphone|android/gi.test(navigator.userAgent));
+}
 
 function log (message, style)
 {
@@ -155,7 +161,10 @@ function audio_fmt_result (res)
 
 function audio_play (index, nextEvent)
 {
-	var player = document.createElement('audio');
+	if (player)
+		delete player;
+
+	player = document.createElement('audio');
 
 	playTimer = setTimeout (function() { 
 		log ("Что-то пошло не так, браузер не отвечает на запросы аудио.\n", 'error');
@@ -175,7 +184,18 @@ function audio_play (index, nextEvent)
 	player.oncanplay = function() {
 		clearTimeout (loadTimer);
 		clearTimeout (playTimer);
+
+		playTimer = setTimeout (function() { 
+			log ("Если музыки до сих пор нет, есть какие-то проблемы с аудио.\n", 'error');
+			statuses.audio = false;
+			nextEvent();
+		}, 25000);
+
 		log ("Идёт воспроизведение. Вы должны слышать музыку...\n", 'info');
+	}
+
+	player.onplay = function() {
+		clearTimeout(playTimer);
 	}
 
 	player.onerror = function() {
@@ -187,12 +207,25 @@ function audio_play (index, nextEvent)
 	}
 
 	player.onpause = function() {
+		clearTimeout (playTimer);
 		log ("Воспроизведение завершено.\n", 'info');
 		nextEvent();
 	}
 
 	player.src = audios[index].file;
-	player.play();
+
+	if (is_mobile())
+	{
+		$('#audio-play').off();
+		$('#audio-play').click(function() {
+			$('#audio-popup').hide();
+			player.play();
+		});
+
+		$('#audio-popup').show();
+	}
+	else
+		player.play();
 }
 
 function audio_test()

@@ -11,18 +11,25 @@
 		<title>Provodach Troubleshooter</title>
 	</head>
 	<body>
-		<div id="start-splash">
-			<div id="splash-container">
+		<div id="start-splash" class="popup">
+			<div id="splash-container" class="popup-container">
 			<div id="splash-title">Данная страница попробует обнаружить проблемы с радиостанцией &laquo;Проводач&raquo;. Она проверит связь с нужными серверами и совместимость браузера.
 			<br>
 			Чтобы начать, нажмите кнопку ниже.
 			</div>
 
-			<a id="splash-start-test" href="javascript:void(0)" onclick="start_test(); return false">Начать проверку</a>
+			<a id="splash-start-test" href="javascript:void(0)" onclick="start_test(); return false" class="popup-button">Начать проверку</a>
 			</div>
 		</div>
 
 		<div id="log">
+		</div>
+
+		<div id="audio-popup" class="popup">
+			<div class="popup-container">
+			<div>Аудио на мобильных устройствах требует непосредственного взаимодействия со страницей. Нажмите кнопку ниже, чтобы начать тестирование.</div>
+			<a id="audio-play" href="javascript:void(0)" class="popup-button">Начать проверку</a>
+			</div>
 		</div>
 	</body>
 </html>
