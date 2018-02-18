@@ -1,4 +1,4 @@
-var servers = ['provoda.ch', 'api.nyan.pw', 'static.https.cat', 'api.https.cat', 'station.waveradio.org', 'bits.waveradio.org'],
+var servers = ['provoda.ch', 'static.https.cat', 'airin.https.cat', 'api.https.cat', 'station.waveradio.org', 'bits.waveradio.org'],
 
 	audios  = [{
 			'type' : 'audio/mpeg',
@@ -104,7 +104,7 @@ function websocket_test()
 		try
 		{
 			log ("Сокеты поддерживаются, пробую подключиться...\n");
-			var sock = new WebSocket('wss://api.nyan.pw:1337');
+			var sock = new WebSocket('wss://airin.https.cat:443');
 
 			sock.onmessage = function (ev) {
 				if (ev.data.indexOf ('REM') > -1)
