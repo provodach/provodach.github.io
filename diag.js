@@ -1,4 +1,4 @@
-var servers = ['provoda.ch', 'static.https.cat', 'airin.https.cat', 'api.https.cat', 'station.waveradio.org', 'bits.waveradio.org'],
+var servers = ['provoda.ch', 'static.nay.su', 'airin.nay.su', 'api.nay.su', 'station.waveradio.org', 'core.waveradio.org'],
 
 	audios  = [{
 			'type' : 'audio/mpeg',
