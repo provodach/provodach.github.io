@@ -104,7 +104,7 @@ function websocket_test()
 		try
 		{
 			log ("Сокеты поддерживаются, пробую подключиться...\n");
-			var sock = new WebSocket('wss://airin.https.cat:443');
+			var sock = new WebSocket('wss://airin.nay.su:443');
 
 			sock.onmessage = function (ev) {
 				if (ev.data.indexOf ('REM') > -1)
